@@ -23,10 +23,18 @@
             --primary-blue: #0066cc;
             --primary-dark: #003366;
             --secondary-teal: #00b3a4;
+            --primary-light: #4da3ff;
 
             --neutral-white: #ffffff;
             --neutral-gray: #666666;
+            --neutral-light: #f8f9fa;
+            --neutral-dark: #333333;
 
+
+            --accent-orange: #ff8c00;
+
+
+            --spacing-xs: 4px;
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 24px;
@@ -39,8 +47,11 @@
             --radius-xl: 16px;
             --radius-circle: 50%;
 
+            /* 🔽 ADD THIS */
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.15);
             --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.25);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.25);
 
             --font-body: Arial, sans-serif;
             --font-heading: Arial, sans-serif;
@@ -49,32 +60,26 @@
             --transition-normal: 0.3s ease;
         }
 
-        .section-title {
-            font-size: 40px;
-            text-align: center;
-            color: var(--primary-dark);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            text-align: center;
-            color: var(--neutral-gray);
-            max-width: 600px;
-            margin: 0 auto var(--spacing-2xl);
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-fast);
         }
 
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-            padding: 20px;
+            color: var(--neutral-dark);
+            background-color: var(--neutral-light);
+            overflow-x: hidden;
         }
 
+        h1,
         h2,
-        h4 {
+        h3,
+        h4,
+        h5 {
             font-family: var(--font-heading);
             font-weight: 700;
             line-height: 1.2;
@@ -121,12 +126,16 @@
             box-shadow: var(--shadow-lg);
         }
 
-        h1 {
-            color: #0066cc;
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1rem;
-            border-bottom: 2px solid #0066cc;
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--neutral-white);
         }
 
 
@@ -139,188 +148,216 @@
             margin-bottom: 1rem;
         }
 
-        /* HERO SLIDER - Day 2 (Sanya - Feature Branch)
-           Git Command: git commit -m "Refine hero slider content and layout structure" */
-        .hero-slider {
-            background: linear-gradient(135deg, #0066cc, #0099cc);
-            color: white;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            text-align: center;
+        .hero {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: var(--neutral-white);
+            margin-top: 80px;
             position: relative;
             overflow: hidden;
         }
 
-        .slider-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 204, 204, 0.1) 0%, transparent 70%);
+            border-radius: var(--radius-circle);
+        }
+
+        .hero-content {
             position: relative;
             z-index: 1;
+            max-width: 800px;
         }
 
-        .slider-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-xl);
+            background: linear-gradient(90deg, var(--neutral-white), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .slider-subtitle {
-            font-size: 1.2rem;
+        .hero-subtitle {
+            font-size: 20px;
             opacity: 0.9;
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            margin-bottom: var(--spacing-2xl);
+            max-width: 600px;
         }
 
-        .slider-indicators {
+        .hero-buttons {
             display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
         }
-
-        .slider-indicator {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .slider-indicator.active {
-            background: white;
-        }
-
-        /* LAYOUT STRUCTURE IMPROVEMENTS - Day 2 (Sanya) */
-        .layout-demo {
-            background: white;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .layout-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .layout-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #dee2e6;
-        }
-
-        .layout-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #0066cc;
-        }
-
 
 
         /* NAVIGATION - Day 1 (Alex)
    Git Command: git commit -m "Refine navbar labels" */
 
-        .navbar {
-            background: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--neutral-white);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: var(--spacing-md) 0;
+            transition: all var(--transition-normal);
+        }
+
+        .header.scrolled {
+            padding: var(--spacing-sm) 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #0066cc;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
         }
 
+
         .nav-menu {
-            list-style: none;
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            list-style: none;
+            gap: var(--spacing-xl);
         }
 
         .nav-link {
-            text-decoration: none;
-            color: #333;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: 0.3s;
-            font-weight: 500;
+            font-weight: 600;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transition: all var(--transition-normal);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
         }
 
         .nav-link:hover {
-            background: #0066cc;
-            color: white;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-blue);
+            cursor: pointer;
         }
 
 
         /* WHY-US SECTION - Day 2 (Tom - Feature Branch)
    Git Command: git commit -m "Improve hero layout and why-us cards" */
-        .whyus-section {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .whyus {
+            background-color: var(--neutral-white);
+        }
+
+        .section-title {
+            font-size: 40px;
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            text-align: center;
+            color: var(--neutral-gray);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-2xl);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
         }
 
         .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #dee2e6;
+            background: var(--neutral-light);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            transition: all var(--transition-normal);
+            border: 1px solid transparent;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            color: #0066cc;
-            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--neutral-white);
+            font-size: 24px;
+            transition: all var(--transition-normal);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(15deg) scale(1.1);
         }
 
         .feature-title {
-            color: #333;
-            margin-bottom: 1rem;
+            font-size: 22px;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-description {
+            color: var(--neutral-gray);
+            line-height: 1.7;
         }
 
         /* LEARNING PATH - Day 3 (Tom) */
         .learning-path {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--neutral-white);
         }
 
         .path-steps {
             max-width: 800px;
-            margin: 2rem auto 0;
+            margin: var(--spacing-2xl) auto 0;
             position: relative;
         }
 
@@ -331,71 +368,72 @@
             left: 30px;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(to bottom, #0066cc, #0099cc);
+            background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-teal));
         }
 
         .path-step {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
             position: relative;
         }
 
         .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #0066cc, #0099cc);
-            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            border-radius: var(--radius-circle);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
+            color: var(--neutral-white);
+            font-size: 24px;
+            font-weight: 700;
             flex-shrink: 0;
             position: relative;
             z-index: 1;
         }
 
         .step-content {
-            padding-top: 0.5rem;
+            padding-top: var(--spacing-md);
         }
 
         .step-title {
-            color: #0066cc;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 24px;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step-description {
+            color: var(--neutral-gray);
+            line-height: 1.7;
         }
 
 
         /* TESTIMONIALS - Day 3 (Tom) */
-        .testimonials {
-            background: #f8f9fa;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            border: 1px solid #dee2e6;
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .testimonial-content {
+            font-style: italic;
+            color: var(--neutral-dark);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+            position: relative;
+            padding-left: var(--spacing-lg);
         }
 
         .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: var(--neutral-white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
         }
 
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            color: #555;
-        }
 
         .testimonial-author {
             display: flex;
@@ -419,112 +457,110 @@
 
 
         /* COURSES SECTION – Day 2 (Alex) */
-        .courses-section {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 3rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .courses {
+            background: linear-gradient(135deg, var(--neutral-light), #E8F4FF);
         }
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
         }
 
         .course-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
+            background: var(--neutral-white);
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            transition: 0.3s;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
         }
 
         .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
         }
 
         .course-image {
-            height: 150px;
-            background: linear-gradient(135deg, #0066cc, #0099cc);
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: white;
+            color: var(--neutral-white);
+            font-size: 48px;
         }
 
         .course-content {
-            padding: 1.5rem;
+            padding: var(--spacing-xl);
         }
 
         .course-category {
-            background: #0066cc;
-            color: white;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
             display: inline-block;
-            margin-bottom: 0.5rem;
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: linear-gradient(135deg, var(--accent-orange), #FFCC00);
+            color: var(--neutral-white);
+            border-radius: var(--radius-circle);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
         }
 
         .course-title {
-            margin-bottom: 0.5rem;
-            color: #333;
+            font-size: 22px;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .course-description {
+            color: var(--neutral-gray);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.7;
         }
 
         .course-meta {
             display: flex;
             justify-content: space-between;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #666;
-
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--neutral-light);
         }
 
         /* TECH STACK - Day 3 (Alex) */
 
         .tech-stack {
-            background: white;
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--neutral-white);
         }
 
         .stack-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
         }
 
         .stack-item {
-            background: #f8f9fa;
-            padding: 1.5rem 1rem;
-            border-radius: 8px;
+            background: var(--neutral-light);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #dee2e6;
+            transition: all var(--transition-normal);
         }
 
         .stack-item:hover {
-            background: #0066cc;
-            color: white;
-            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--neutral-white);
+            transform: translateY(-5px) scale(1.05);
         }
 
         .stack-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 36px;
+            margin-bottom: var(--spacing-sm);
         }
 
         .stack-name {
-            font-weight: bold;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 14px;
         }
 
 
@@ -611,7 +647,7 @@
         }
 
 
- /* ============================================
+        /* ============================================
            RESPONSIVE DESIGN STYLES
            Day: 4 (UI polish branch)
            Person: Alex (Team Leader)
@@ -628,11 +664,11 @@
             .hero-title {
                 font-size: 48px;
             }
-            
+
             .section-title {
                 font-size: 36px;
             }
-            
+
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-xl);
@@ -643,7 +679,7 @@
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .nav-menu {
                 position: fixed;
                 top: 80px;
@@ -658,28 +694,28 @@
                 transition: left var(--transition-normal);
                 box-shadow: var(--shadow-lg);
             }
-            
+
             .nav-menu.active {
                 left: 0;
             }
-            
+
             .hero-title {
                 font-size: 40px;
             }
-            
+
             .hero-subtitle {
                 font-size: 18px;
             }
-            
+
             .section-title {
                 font-size: 32px;
             }
-            
+
             .hero-buttons {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
+
             .btn {
                 width: 100%;
                 justify-content: center;
@@ -690,20 +726,22 @@
             .hero-title {
                 font-size: 32px;
             }
-            
+
             .section-title {
                 font-size: 28px;
             }
-            
-            .feature-card, .course-card, .testimonial-card {
+
+            .feature-card,
+            .course-card,
+            .testimonial-card {
                 padding: var(--spacing-lg);
             }
-            
+
             .path-step {
                 flex-direction: column;
                 gap: var(--spacing-md);
             }
-            
+
             .path-steps::before {
                 left: 32px;
             }
@@ -721,6 +759,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -747,24 +786,22 @@
         /* FOOTER - Day 1 (Sanya)
    Git Command: git commit -m "Update footer text" */
         .footer {
-            background: #333;
-            color: white;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-radius: 8px;
+            background: var(--primary-dark);
+            color: var(--neutral-white);
+            padding: var(--spacing-3xl) 0 var(--spacing-xl);
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
         }
 
-        .footer-section h3 {
-            color: #0099cc;
-            margin-bottom: 1rem;
+        .footer-column h3 {
+            font-size: 20px;
+            color: var(--secondary-teal);
+            margin-bottom: var(--spacing-lg);
         }
 
         .footer-links {
@@ -772,26 +809,47 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--spacing-sm);
         }
 
         .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            color: rgba(255, 255, 255, 0.8);
+            transition: color var(--transition-fast);
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--secondary-teal);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-circle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            transition: all var(--transition-normal);
+        }
+
+        .social-link:hover {
+            background: var(--secondary-teal);
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #555;
-            color: #999;
-            font-size: 0.9rem;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
         }
     </style>
 
@@ -801,131 +859,163 @@
 
     <!-- NAVIGATION - Day 1 (Alex)
      Git Command: git commit -m "Refine navbar labels" -->
-    <nav class="navbar">
-        <div class="logo"> <i class="fas fa-graduation-cap"></i> IT Education</div>
-        <ul class="nav-menu">
-            <li><a href="#" class="nav-link">Home</a></li>
-            <li><a href="#" class="nav-link">Courses</a></li>
-            <li><a href="#" class="nav-link">Learning Path</a></li>
-            <li><a href="#" class="nav-link">Team</a></li>
-            <li><a href="#" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>IT</span>Education
+                </a>
 
-    <!-- HEADER SECTION - Day 0
-         Created by: Sanya (Project Leader)
-         Git Command: git add . && git commit -m "Initial project structure" -->
-    <div class="day-marker">Day 0: Initial Setup</div>
-    <h1>IT Education Website - Git Bootcamp</h1>
-
-    <!-- HERO SLIDER - Day 2 (Sanya - Feature Branch)
-         Git Command: git commit -m "Refine hero slider content and layout structure" -->
-    <section class="hero-slider">
-        <div class="slider-content">
-            <h2 class="slider-title">Transform Your Git Skills in 7 Days</h2>
-            <p class="slider-subtitle">
-                Our intensive bootcamp takes you from basic commits to advanced workflows.
-                Learn through hands-on projects, team collaboration, and real-world scenarios.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button style="background: white; color: #0066cc; border: none; padding: 1rem 2rem; 
-                              border-radius: 5px; font-weight: bold; cursor: pointer; display: flex; 
-                              align-items: center; gap: 0.5rem;">
-                    <span>🚀</span> Start Day 1
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
                 </button>
-                <button style="background: transparent; color: white; border: 2px solid white; 
-                              padding: 1rem 2rem; border-radius: 5px; font-weight: bold; cursor: pointer;">
-                    View Curriculum
-                </button>
-            </div>
 
-            <div class="slider-indicators">
-                <div class="slider-indicator active"></div>
-                <div class="slider-indicator"></div>
-                <div class="slider-indicator"></div>
-                <div class="slider-indicator"></div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#courses" class="nav-link">Courses</a></li>
+                    <li><a href="#learning-path" class="nav-link">Learning Path</a></li>
+                    <li><a href="#tech-stack" class="nav-link">Tech Stack</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- ============================================
+         HERO SECTION
+         Day: 1 (Simple Git workflow)
+         Person: Tom (Developer)
+         Task: Change simple text in Hero Section
+         Git Command Reference: See CSS comments above
+    ============================================ -->
+    <section class="hero section" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Master Git & GitHub in 7 Days</h1>
+                <p class="hero-subtitle">
+                    Join our intensive bootcamp and learn Git from basic commands to advanced workflows.
+                    Perfect for developers, team leads, and anyone who wants to collaborate effectively using version
+                    control.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i>
+                        Start Learning Now
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-calendar-alt"></i>
+                        Book Free Session
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
 
     <!-- WHY US SECTION - Day 2 (Tom - Feature Branch) -->
-    <section class="whyus-section">
-        <h2 class="section-title">Why Choose Our Git Bootcamp?</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-            Here's what makes our training program different and effective for your career growth.
-        </p>
+    <section class="whyus section" id="whyus">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Learn Git With Us?</h2>
+            <p class="section-subtitle fade-in-delay-1">
+                We provide hands-on training with real-world projects. Here's what makes our bootcamp special:
+            </p>
 
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3 class="feature-title">Structured Learning Path</h3>
-                <p>7-day progressive curriculum from basics to advanced Git workflows.</p>
-            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in-delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="feature-title">Day-by-Day Progress</h3>
+                    <p class="feature-description">
+                        Structured 7-day journey from simple commits to advanced rebasing and team collaboration.
+                    </p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3 class="feature-title">Real Team Simulation</h3>
-                <p>Work with simulated team members (Sanya, Alex, Tom) like real projects.</p>
-            </div>
+                <div class="feature-card fade-in-delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Real Team Simulation</h3>
+                    <p class="feature-description">
+                        Work in a simulated team environment with Sanya, Alex, and Tom - just like real projects.
+                    </p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">💻</div>
-                <h3 class="feature-title">Hands-on Projects</h3>
-                <p>Build actual websites while learning Git commands at each step.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3 class="feature-title">Career Focused</h3>
-                <p>Learn industry-standard workflows used by professional development teams.</p>
+                <div class="feature-card fade-in-delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="feature-title">Project-Based Learning</h3>
+                    <p class="feature-description">
+                        Build this actual website while learning Git commands at each step. See your progress live!
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
+
     <!-- COURSES – Day 2 (Alex) -->
-    <section class="courses-section">
-        <h2 style="text-align:center;color:#0066cc;">Our Courses</h2>
-        <p style="text-align:center;color:#666;margin-top:0.5rem;">
-            Learn Git step by step with real-world projects
-        </p>
+    <section class="courses section" id="courses">
+        <div class="container">
+            <h2 class="section-title fade-in">Git Bootcamp Curriculum</h2>
+            <p class="section-subtitle fade-in-delay-1">
+                Our 7-day intensive program covers everything from basic setup to advanced Git workflows
+            </p>
 
-        <div class="courses-grid">
-            <div class="course-card">
-                <div class="course-image">📘</div>
-                <div class="course-content">
-                    <span class="course-category">Beginner</span>
-                    <h3 class="course-title">Git Fundamentals</h3>
-                    <p>Understand Git basics, commits, and repositories.</p>
-                    <div class="course-meta">
-                        <span>⏱ 4 hrs</span>
-                        <span>⭐ 4.8</span>
+            <div class="courses-grid">
+                <div class="course-card fade-in-delay-1">
+                    <div class="course-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Day 0-1</span>
+                        <h3 class="course-title">Simple Git Basics</h3>
+                        <p class="course-description">
+                            Learn basic commands: init, add, commit, push, pull. Understand the fundamental Git
+                            workflow.
+                        </p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 4 hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="course-card">
-                <div class="course-image">🌿</div>
-                <div class="course-content">
-                    <span class="course-category">Intermediate</span>
-                    <h3 class="course-title">Branching & Merging</h3>
-                    <p>Work with feature branches and resolve conflicts.</p>
-                    <div class="course-meta">
-                        <span>⏱ 6 hrs</span>
-                        <span>⭐ 4.9</span>
+                <div class="course-card fade-in-delay-2">
+                    <div class="course-image">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Day 2-4</span>
+                        <h3 class="course-title">Branching & Collaboration</h3>
+                        <p class="course-description">
+                            Master branching strategies, pull requests, merge conflicts, and team collaboration
+                            workflows.
+                        </p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 8 hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="course-card">
-                <div class="course-image">🚀</div>
-                <div class="course-content">
-                    <span class="course-category">Advanced</span>
-                    <h3 class="course-title">Advanced Git Workflows</h3>
-                    <p>Rebase, stash, cherry-pick, and team workflows.</p>
-                    <div class="course-meta">
-                        <span>⏱ 5 hrs</span>
-                        <span>⭐ 5.0</span>
+                <div class="course-card fade-in-delay-3">
+                    <div class="course-image">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Day 5-7</span>
+                        <h3 class="course-title">Advanced Git Workflows</h3>
+                        <p class="course-description">
+                            Dive into rebasing, stashing, cherry-picking, and advanced team coordination strategies.
+                        </p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 6 hours</span>
+                            <span><i class="fas fa-signal"></i> Advanced</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -934,156 +1024,153 @@
 
 
     <!-- LEARNING PATH SECTION - Day 3 (Tom) -->
-    <section class="learning-path">
-        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
-            7-Day Git Learning Journey
-        </h2>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-            Follow this structured path from Git novice to version control expert
-        </p>
+    <section class="learning-path section" id="learning-path">
+        <div class="container">
+            <h2 class="section-title fade-in">7-Day Learning Journey</h2>
+            <p class="section-subtitle fade-in-delay-1">
+                Follow this structured path from Git novice to version control expert
+            </p>
 
-        <div class="path-steps">
-            <div class="path-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3 class="step-title">Days 0-1: Foundation</h3>
-                    <p>Git setup, basic commands (init, add, commit, push), simple workflow on main branch.</p>
+            <div class="path-steps">
+                <div class="path-step fade-in-delay-1">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 0-1: Setup & Basics</h3>
+                        <p class="step-description">
+                            Install Git, create your first repository, learn basic commands (init, add, commit, push).
+                            Everyone works on main branch with simple edits.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="path-step fade-in-delay-2">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 2-3: Branching & Collaboration</h3>
+                        <p class="step-description">
+                            Learn feature branches, pull requests, handling merge conflicts.
+                            Team members work on different sections of the website.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="path-step fade-in-delay-3">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 4-7: Advanced Workflows</h3>
+                        <p class="step-description">
+                            Master rebasing, stashing, cherry-picking, and team coordination.
+                            Simulate real-world team scenarios with multiple parallel features.
+                        </p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="path-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3 class="step-title">Days 2-3: Branching</h3>
-                    <p>Feature branches, pull requests, merge conflicts, team collaboration strategies.</p>
+    <!-- TESTIMONIALS SECTION - Day 3 (Tom) -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">What Our Students Say</h2>
+            <p class="section-subtitle fade-in-delay-1">
+                Hear from developers who transformed their workflow with our Git bootcamp
+            </p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in-delay-1">
+                    <div class="testimonial-content">
+                        The hands-on approach with real team simulation (Sanya, Alex, Tom) made all the difference.
+                        I went from Git novice to confidently managing team repositories in just one week!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JS</div>
+                        <div class="author-info">
+                            <h4>Jamie Smith</h4>
+                            <p class="author-role">Frontend Developer</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="path-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3 class="step-title">Days 4-7: Advanced</h3>
-                    <p>Rebasing, stashing, cherry-picking, team simulations, and production workflows.</p>
+                <div class="testimonial-card fade-in-delay-2">
+                    <div class="testimonial-content">
+                        Learning Git through building this actual website was brilliant. Each day's tasks
+                        corresponded to real Git commands, making the learning process intuitive and practical.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Maria Rodriguez</h4>
+                            <p class="author-role">Full Stack Developer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-delay-3">
+                    <div class="testimonial-content">
+                        The day-by-day progression from simple commits to advanced rebasing perfectly
+                        mirrored real project workflows. The team simulation exercises were particularly valuable.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TC</div>
+                        <div class="author-info">
+                            <h4>Thomas Chen</h4>
+                            <p class="author-role">Team Lead</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- TECH STACK SECTION - Day 3 (Alex) -->
-    <section class="tech-stack">
-        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
-            Technologies You'll Master
-        </h2>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-            Along with Git, gain experience with these essential web technologies
-        </p>
+    <section class="tech-stack section" id="tech-stack">
+        <div class="container">
+            <h2 class="section-title fade-in">Technologies You'll Master</h2>
+            <p class="section-subtitle fade-in-delay-1">
+                Along with Git, you'll gain experience with these essential web technologies
+            </p>
 
-        <div class="stack-grid">
-            <div class="stack-item">
-                <div class="stack-icon">🌐</div>
-                <div class="stack-name">HTML5</div>
-            </div>
-
-            <div class="stack-item">
-                <div class="stack-icon">🎨</div>
-                <div class="stack-name">CSS3</div>
-            </div>
-
-            <div class="stack-item">
-                <div class="stack-icon">⚡</div>
-                <div class="stack-name">JavaScript</div>
-            </div>
-
-            <div class="stack-item">
-                <div class="stack-icon">📊</div>
-                <div class="stack-name">Git</div>
-            </div>
-
-            <div class="stack-item">
-                <div class="stack-icon">🚀</div>
-                <div class="stack-name">GitHub</div>
-            </div>
-
-            <div class="stack-item">
-                <div class="stack-icon">💻</div>
-                <div class="stack-name">VS Code</div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- LAYOUT STRUCTURE IMPROVEMENTS - Day 2 (Sanya) -->
-    <section class="layout-demo">
-        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
-            Website Structure Improvements
-        </h2>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-            As Project Leader, I'm improving the overall layout structure for better maintainability
-        </p>
-
-        <div class="layout-grid">
-            <div class="layout-item">
-                <div class="layout-icon">🏗️</div>
-                <h3>Modular Structure</h3>
-                <p>Each section is independent and reusable</p>
-            </div>
-
-            <div class="layout-item">
-                <div class="layout-icon">📱</div>
-                <h3>Responsive Design</h3>
-                <p>Works on mobile, tablet, and desktop</p>
-            </div>
-
-            <div class="layout-item">
-                <div class="layout-icon">🎨</div>
-                <h3>Consistent Styling</h3>
-                <p>Uniform spacing, colors, and typography</p>
-            </div>
-
-            <div class="layout-item">
-                <div class="layout-icon">⚡</div>
-                <h3>Performance</h3>
-                <p>Optimized for fast loading and smooth interactions</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- TESTIMONIALS SECTION - Day 3 (Tom) -->
-    <section class="testimonials">
-        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
-            Student Testimonials
-        </h2>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-            Hear from developers who transformed their workflow
-        </p>
-
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "The hands-on approach with real team simulation made all the difference.
-                    I went from Git novice to confidently managing team repositories in one week!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JS</div>
-                    <div>
-                        <h4>Jamie Smith</h4>
-                        <p style="color: #666; font-size: 0.9rem;">Frontend Developer</p>
+            <div class="stack-grid">
+                <div class="stack-item fade-in-delay-1">
+                    <div class="stack-icon">
+                        <i class="fab fa-html5"></i>
                     </div>
+                    <div class="stack-name">HTML5</div>
                 </div>
-            </div>
 
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Learning Git through building this actual website was brilliant.
-                    Each day's tasks corresponded to real Git commands."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MR</div>
-                    <div>
-                        <h4>Maria Rodriguez</h4>
-                        <p style="color: #666; font-size: 0.9rem;">Full Stack Developer</p>
+                <div class="stack-item fade-in-delay-2">
+                    <div class="stack-icon">
+                        <i class="fab fa-css3-alt"></i>
                     </div>
+                    <div class="stack-name">CSS3</div>
+                </div>
+
+                <div class="stack-item fade-in-delay-3">
+                    <div class="stack-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="stack-name">JavaScript</div>
+                </div>
+
+                <div class="stack-item fade-in-delay-1">
+                    <div class="stack-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="stack-name">Git</div>
+                </div>
+
+                <div class="stack-item fade-in-delay-2">
+                    <div class="stack-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="stack-name">GitHub</div>
+                </div>
+
+                <div class="stack-item fade-in-delay-3">
+                    <div class="stack-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <div class="stack-name">Terminal</div>
                 </div>
             </div>
         </div>
@@ -1162,32 +1249,67 @@
     <!-- FOOTER - Day 1 (Sanya)
      Git Command: git commit -m "Update footer text" -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>IT Education</h3>
-                <p>Learn Git through hands-on, project-based training.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>IT Education</h3>
+                    <p>Master Git and version control through hands-on, project-based learning. Transform how you
+                        collaborate on code.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#learning-path">Learning Path</a></li>
+                        <li><a href="#tech-stack">Tech Stack</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Git Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Git Documentation</a></li>
+                        <li><a href="#">GitHub Guides</a></li>
+                        <li><a href="#">Interactive Tutorials</a></li>
+                        <li><a href="#">Cheat Sheets</a></li>
+                        <li><a href="#">Video Tutorials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Team Members</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><strong>Sanya</strong> - Project Leader</a></li>
+                        <li><a href="#"><strong>Alex</strong> - Team Leader</a></li>
+                        <li><a href="#"><strong>Tom</strong> - Developer</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Git Resources</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
+            <div class="copyright">
+                <p>&copy; 2024 IT Education Git Bootcamp. All rights reserved.</p>
+                <p style="margin-top: var(--spacing-xs); font-size: 12px;">
+                    This website was built during a 7-day Git training program. Each section corresponds to specific Git
+                    commands learned.
+                </p>
             </div>
-
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p>Email: info@iteducation.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; 2024 IT Education Git Bootcamp. All rights reserved.</p>
-            <p>This project demonstrates Git workflow from Day 0 to Day 7.</p>
         </div>
     </footer>
 
