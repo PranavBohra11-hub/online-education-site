@@ -393,6 +393,49 @@
             margin-top: 1rem;
             font-size: 0.9rem;
             color: #666;
+
+        }
+
+        /* TECH STACK - Day 3 (Alex) */
+
+        .tech-stack {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stack-item {
+            background: #f8f9fa;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #dee2e6;
+        }
+
+        .stack-item:hover {
+            background: #0066cc;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .stack-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stack-name {
+            font-weight: bold;
+            font-size: 0.9rem;
         }
 
 
@@ -502,38 +545,36 @@
     </section>
 
 
-    <!-- LAYOUT STRUCTURE IMPROVEMENTS - Day 2 (Sanya) -->
-    <section class="layout-demo">
-        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
-            Website Structure Improvements
-        </h2>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
-            As Project Leader, I'm improving the overall layout structure for better maintainability
+    <!-- WHY US SECTION - Day 2 (Tom - Feature Branch) -->
+    <section class="whyus-section">
+        <h2 class="section-title">Why Choose Our Git Bootcamp?</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+            Here's what makes our training program different and effective for your career growth.
         </p>
 
-        <div class="layout-grid">
-            <div class="layout-item">
-                <div class="layout-icon">🏗️</div>
-                <h3>Modular Structure</h3>
-                <p>Each section is independent and reusable</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3 class="feature-title">Structured Learning Path</h3>
+                <p>7-day progressive curriculum from basics to advanced Git workflows.</p>
             </div>
 
-            <div class="layout-item">
-                <div class="layout-icon">📱</div>
-                <h3>Responsive Design</h3>
-                <p>Works on mobile, tablet, and desktop</p>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Real Team Simulation</h3>
+                <p>Work with simulated team members (Sanya, Alex, Tom) like real projects.</p>
             </div>
 
-            <div class="layout-item">
-                <div class="layout-icon">🎨</div>
-                <h3>Consistent Styling</h3>
-                <p>Uniform spacing, colors, and typography</p>
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3 class="feature-title">Hands-on Projects</h3>
+                <p>Build actual websites while learning Git commands at each step.</p>
             </div>
 
-            <div class="layout-item">
-                <div class="layout-icon">⚡</div>
-                <h3>Performance</h3>
-                <p>Optimized for fast loading and smooth interactions</p>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Career Focused</h3>
+                <p>Learn industry-standard workflows used by professional development teams.</p>
             </div>
         </div>
     </section>
@@ -588,42 +629,6 @@
     </section>
 
 
-
-    <!-- WHY US SECTION - Day 2 (Tom - Feature Branch) -->
-    <section class="whyus-section">
-        <h2 class="section-title">Why Choose Our Git Bootcamp?</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-            Here's what makes our training program different and effective for your career growth.
-        </p>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3 class="feature-title">Structured Learning Path</h3>
-                <p>7-day progressive curriculum from basics to advanced Git workflows.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3 class="feature-title">Real Team Simulation</h3>
-                <p>Work with simulated team members (Sanya, Alex, Tom) like real projects.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">💻</div>
-                <h3 class="feature-title">Hands-on Projects</h3>
-                <p>Build actual websites while learning Git commands at each step.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3 class="feature-title">Career Focused</h3>
-                <p>Learn industry-standard workflows used by professional development teams.</p>
-            </div>
-        </div>
-    </section>
-
-
     <!-- LEARNING PATH SECTION - Day 3 (Tom) -->
     <section class="learning-path">
         <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
@@ -656,6 +661,86 @@
                     <h3 class="step-title">Days 4-7: Advanced</h3>
                     <p>Rebasing, stashing, cherry-picking, team simulations, and production workflows.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK SECTION - Day 3 (Alex) -->
+    <section class="tech-stack">
+        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
+            Technologies You'll Master
+        </h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            Along with Git, gain experience with these essential web technologies
+        </p>
+
+        <div class="stack-grid">
+            <div class="stack-item">
+                <div class="stack-icon">🌐</div>
+                <div class="stack-name">HTML5</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon">🎨</div>
+                <div class="stack-name">CSS3</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon">⚡</div>
+                <div class="stack-name">JavaScript</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon">📊</div>
+                <div class="stack-name">Git</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon">🚀</div>
+                <div class="stack-name">GitHub</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-icon">💻</div>
+                <div class="stack-name">VS Code</div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- LAYOUT STRUCTURE IMPROVEMENTS - Day 2 (Sanya) -->
+    <section class="layout-demo">
+        <h2 style="text-align: center; color: #0066cc; margin-bottom: 1rem;">
+            Website Structure Improvements
+        </h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            As Project Leader, I'm improving the overall layout structure for better maintainability
+        </p>
+
+        <div class="layout-grid">
+            <div class="layout-item">
+                <div class="layout-icon">🏗️</div>
+                <h3>Modular Structure</h3>
+                <p>Each section is independent and reusable</p>
+            </div>
+
+            <div class="layout-item">
+                <div class="layout-icon">📱</div>
+                <h3>Responsive Design</h3>
+                <p>Works on mobile, tablet, and desktop</p>
+            </div>
+
+            <div class="layout-item">
+                <div class="layout-icon">🎨</div>
+                <h3>Consistent Styling</h3>
+                <p>Uniform spacing, colors, and typography</p>
+            </div>
+
+            <div class="layout-item">
+                <div class="layout-icon">⚡</div>
+                <h3>Performance</h3>
+                <p>Optimized for fast loading and smooth interactions</p>
             </div>
         </div>
     </section>
